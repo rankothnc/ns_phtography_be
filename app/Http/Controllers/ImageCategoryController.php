@@ -16,6 +16,17 @@ class ImageCategoryController extends Controller
         return view('categories.index', compact('categories'));
     }
 
+    public function getGalleryCategoriesForAPI()
+    {
+        $categories = ImageCategory::where('status', 'active')
+            ->orderBy('ic_id', 'asc')->get(['ic_id', 'ic_name', 'description']);
+
+        return response()->json([
+            'success' => true,
+            'msg' => 'Gallery categories retrieved successfully',
+            'data' => $categories
+        ]);
+    }
 
     public function store(Request $request)
     {

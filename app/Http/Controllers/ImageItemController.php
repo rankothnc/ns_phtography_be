@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\ImageCategory;
 use App\Models\ImageItem;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 class ImageItemController extends Controller
 {
@@ -17,14 +17,22 @@ class ImageItemController extends Controller
         return view('image-items.index', compact('items'));
     }
 
-    public function getGalleryItemsForAPI()
+    public function getGalleryItemsForAPI(Request $request)
     {
-        $items = ImageItem::with([
+        $query = ImageItem::with([
             'category' => function ($q) {
                 $q->where('status', 'active');
             }
         ])
-            ->where('status', 'active')
+        ->where('status', 'active');
+
+        if ($request->filled('category_id')) {
+            if(!empty($request->category_id)){
+                $query->where('ic_id', $request->category_id);
+            }
+        }
+
+        $items = $query
             ->orderBy('ii_id', 'asc')
             ->paginate(10);
 
@@ -38,6 +46,7 @@ class ImageItemController extends Controller
     public function create(Request $request)
     {
         $categories = ImageCategory::where('status', 'active')->get();
+
         return view('image-items.create', compact('categories'));
     }
 
@@ -60,9 +69,9 @@ class ImageItemController extends Controller
         $categoryFolder = str_replace(' ', '_', strtolower($category->ic_name));
 
         // Create upload path
-        $uploadPath = public_path(path: 'storage/uploads/' . $categoryFolder);
+        $uploadPath = public_path(path: 'storage/uploads/'.$categoryFolder);
 
-        if (!file_exists($uploadPath)) {
+        if (! file_exists($uploadPath)) {
             mkdir($uploadPath, 0755, true);
         }
 
@@ -72,13 +81,13 @@ class ImageItemController extends Controller
         $timestamp = now()->format('Ymd_Hi');
         $extension = $imageFile->getClientOriginalExtension();
 
-        $imageName = $firstWord . '_' . $timestamp . '.' . $extension;
+        $imageName = $firstWord.'_'.$timestamp.'.'.$extension;
 
         // Move image
         $imageFile->move($uploadPath, $imageName);
 
         // Save relative path
-        $imagePath = 'storage/uploads/' . $categoryFolder . '/' . $imageName;
+        $imagePath = 'storage/uploads/'.$categoryFolder.'/'.$imageName;
 
         ImageItem::create([
             'ic_id' => $request->ic_id,
@@ -101,7 +110,6 @@ class ImageItemController extends Controller
 
         return view('image-items.create', compact('item', 'categories'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -138,9 +146,9 @@ class ImageItemController extends Controller
             $categoryFolder = str_replace(' ', '_', strtolower($category->ic_name));
 
             // Upload path
-            $uploadPath = public_path('storage/uploads/' . $categoryFolder);
+            $uploadPath = public_path('storage/uploads/'.$categoryFolder);
 
-            if (!file_exists($uploadPath)) {
+            if (! file_exists($uploadPath)) {
                 mkdir($uploadPath, 0755, true);
             }
 
@@ -150,13 +158,13 @@ class ImageItemController extends Controller
             $timestamp = now()->format('Ymd_Hi');
             $extension = $imageFile->getClientOriginalExtension();
 
-            $imageName = $firstWord . '_' . $timestamp . '.' . $extension;
+            $imageName = $firstWord.'_'.$timestamp.'.'.$extension;
 
             // Move image
             $imageFile->move($uploadPath, $imageName);
 
             // Save new path
-            $item->image_path = 'storage/uploads/' . $categoryFolder . '/' . $imageName;
+            $item->image_path = 'storage/uploads/'.$categoryFolder.'/'.$imageName;
         }
 
         $item->save();
@@ -184,17 +192,17 @@ class ImageItemController extends Controller
         return redirect()->route('image-items.index')->with('success', $message);
     }
 
-
     public function destroy($id)
     {
         $item = ImageItem::findOrFail($id);
+
         return view('image-items.destroy', compact('item'));
     }
 
     public function show($id)
     {
         $item = ImageItem::with('category')->findOrFail($id);
+
         return response()->json($item);
     }
-
 }
