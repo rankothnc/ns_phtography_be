@@ -256,7 +256,7 @@
                                         value="{{ $item->image_title ?? '' }}" required />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="shrt-desc">Short Description</label>
+                                    <label class="form-label" for="shrt-desc">Location</label>
                                     <input type="text" class="form-control" name="image_desc_short"
                                         value="{{ $item->image_desc_short ?? '' }}" id="shrt-desc" />
                                 </div>
@@ -272,7 +272,7 @@
 
                                 <div class="mb-3">
                                     <label class="form-label" for="img-desc">Description</label>
-                                    <textarea id="img-desc" name="image_desc_long" class="form-control">{{ $item->image_desc_long ?? '' }}</textarea>
+                                    <textarea id="img-desc" name="image_desc_long" class="form-control" style="height: 155px;">{{ $item->image_desc_long ?? '' }}</textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="img-status">Status</label>

@@ -119,7 +119,7 @@
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
-        padding: 0.3rem 0.85rem;
+        padding: 0.1rem 0.5rem;
         border-radius: 999px;
         margin-bottom: 1.1rem;
         width: fit-content;
@@ -191,7 +191,7 @@
         border: 1px solid #e9e9e9;
         border-radius: 12px;
         padding: 0.85rem 1rem;
-        max-height: 90px;
+        max-height: 216px;
         overflow-y: auto;
         font-size: 0.8rem;
         font-weight: 400;
@@ -200,6 +200,7 @@
         scrollbar-width: thin;
         scrollbar-color: #c4b5fd #f5f3ff;
         flex-shrink: 0;
+        text-align: justify;
     }
 
     #viewItemModal .vim-long-box::-webkit-scrollbar {
@@ -276,6 +277,21 @@
     #viewItemModal.show .modal-dialog {
         transform: scale(1) translateY(0);
     }
+
+    .vim-meta-row {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        /* space between items */
+        flex-wrap: wrap;
+        /* optional: moves to next line on very small screens */
+    }
+
+    .vim-date-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
 </style>
 <x-app-layout>
     {{-- Success Alert --}}
@@ -306,6 +322,78 @@
         <a href="{{ route('image-items.create') }}" class="btn btn-primary">
             Add New Item
         </a>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="GET" action="{{ route('image-items.index') }}">
+                <div class="row g-3">
+
+                    <!-- Title search -->
+                    <div class="col-md-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" name="title" value="{{ request('title') }}" list="titleList"
+                            class="form-control" placeholder="Search by title">
+
+                        <datalist id="titleList">
+                            @foreach ($titles as $t)
+                                <option value="{{ $t->image_title }}">
+                            @endforeach
+                        </datalist>
+                    </div>
+
+                    <!-- Category search -->
+                    <div class="col-md-3">
+                        <label class="form-label">Category</label>
+                        <select name="category_id" class="form-select">
+                            <option value="">All Categories</option>
+                            @foreach ($categories as $cat)
+                                <option value="{{ $cat->ic_id }}"
+                                    {{ request('category_id') == $cat->ic_id ? 'selected' : '' }}>
+                                    {{ $cat->ic_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <!-- Captured date -->
+                    <div class="col-md-2">
+                        <label class="form-label">From Date</label>
+                        <input type="date" name="date_from" value="{{ request('date_from') }}" class="form-control">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label class="form-label">To Date</label>
+                        <input type="date" name="date_to" value="{{ request('date_to') }}" class="form-control">
+                    </div>
+                    <!-- Status -->
+                    <div class="col-md-2">
+                        <label class="form-label">Status</label>
+                        <select name="status" class="form-select">
+                            <option value="">All</option>
+                            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>
+                                Active
+                            </option>
+                            <option value="delete" {{ request('status') == 'delete' ? 'selected' : '' }}>
+                                Inactive
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="row mt-4">
+                    <div class="col-12 d-flex justify-content-end gap-2">
+
+                        <button type="submit" class="btn btn-primary">
+                            Search
+                        </button>
+
+                        <a href="{{ route('image-items.index') }}" class="btn btn-outline-secondary">
+                            Reset
+                        </a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <!-- Striped Rows -->
     <div class="card">
@@ -476,30 +564,32 @@
                             <!-- Title -->
                             <h4 class="vim-title" id="modalTitle"></h4>
 
-                            <!-- Category -->
-                            <span class="vim-category" id="modalCategory">
-                                <i class="bi bi-grid-fill"></i>
-                            </span>
+                            <div class="vim-meta-row">
+                                <!-- Category -->
+                                <span class="vim-category" id="modalCategory">
+                                    <i class="bi bi-grid-fill"></i>
+                                </span>
 
-                            <!-- Captured Date -->
-                            <div class="vim-date-row">
-                                <i class="bi bi-calendar3"></i>
-                                <span id="modalDate"></span>
+                                <!-- Captured Date -->
+                                <div class="vim-date-row">
+                                    <i class="bi bi-calendar3"></i>
+                                    <span id="modalDate"></span>
+                                </div>
+
+                                <!-- Status -->
+                                <span class="vim-status active" id="modalStatus"></span>
                             </div>
-
-                            <!-- Status -->
-                            <span class="vim-status active" id="modalStatus"></span>
 
                             <div class="vim-divider"></div>
 
                             <!-- Short Description -->
-                            <p class="vim-short-label">Short Description</p>
+                            {{-- <p class="vim-short-label">Short Description</p> --}}
                             <p class="vim-short-text" id="modalShort">
 
                             </p>
 
                             <!-- Long Description -->
-                            <p class="vim-long-label">Description</p>
+                            {{-- <p class="vim-long-label">Description</p> --}}
                             <div class="vim-long-box" id="modalLong">
 
                             </div>

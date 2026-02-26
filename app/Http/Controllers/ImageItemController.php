@@ -8,13 +8,44 @@ use Illuminate\Http\Request;
 
 class ImageItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $items = ImageItem::with('category')
-            ->orderBy('ii_id', 'asc')
-            ->paginate(10);
+        $query = ImageItem::with('category');
 
-        return view('image-items.index', compact('items'));
+        // 🔍 Title search
+        if ($request->filled('title')) {
+            $query->where('image_title', 'like', '%' . $request->title . '%');
+        }
+
+        // 🗂 Category filter
+        if ($request->filled('category_id')) {
+            $query->where('ic_id', $request->category_id);
+        }
+
+        // 📅 Capture date range
+        if ($request->filled('date_from')) {
+            $query->whereDate('capture_date', '>=', $request->date_from);
+        }
+
+        if ($request->filled('date_to')) {
+            $query->whereDate('capture_date', '<=', $request->date_to);
+        }
+
+        // ⚙ Status filter
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $items = $query
+            ->orderBy('ii_id', 'asc')
+            ->paginate(10)
+            ->withQueryString(); // VERY important
+
+        // For suggestions
+        $categories = ImageCategory::where('status', 'active')->get();
+        $titles = ImageItem::select('image_title')->distinct()->get();
+
+        return view('image-items.index', compact('items', 'categories', 'titles'));
     }
 
     public function getGalleryItemsForAPI(Request $request)
@@ -24,10 +55,10 @@ class ImageItemController extends Controller
                 $q->where('status', 'active');
             }
         ])
-        ->where('status', 'active');
+            ->where('status', 'active');
 
         if ($request->filled('category_id')) {
-            if(!empty($request->category_id)){
+            if (!empty($request->category_id)) {
                 $query->where('ic_id', $request->category_id);
             }
         }
@@ -69,9 +100,9 @@ class ImageItemController extends Controller
         $categoryFolder = str_replace(' ', '_', strtolower($category->ic_name));
 
         // Create upload path
-        $uploadPath = public_path(path: 'storage/uploads/'.$categoryFolder);
+        $uploadPath = public_path(path: 'storage/uploads/' . $categoryFolder);
 
-        if (! file_exists($uploadPath)) {
+        if (!file_exists($uploadPath)) {
             mkdir($uploadPath, 0755, true);
         }
 
@@ -81,13 +112,13 @@ class ImageItemController extends Controller
         $timestamp = now()->format('Ymd_Hi');
         $extension = $imageFile->getClientOriginalExtension();
 
-        $imageName = $firstWord.'_'.$timestamp.'.'.$extension;
+        $imageName = $firstWord . '_' . $timestamp . '.' . $extension;
 
         // Move image
         $imageFile->move($uploadPath, $imageName);
 
         // Save relative path
-        $imagePath = 'storage/uploads/'.$categoryFolder.'/'.$imageName;
+        $imagePath = 'storage/uploads/' . $categoryFolder . '/' . $imageName;
 
         ImageItem::create([
             'ic_id' => $request->ic_id,
@@ -146,9 +177,9 @@ class ImageItemController extends Controller
             $categoryFolder = str_replace(' ', '_', strtolower($category->ic_name));
 
             // Upload path
-            $uploadPath = public_path('storage/uploads/'.$categoryFolder);
+            $uploadPath = public_path('storage/uploads/' . $categoryFolder);
 
-            if (! file_exists($uploadPath)) {
+            if (!file_exists($uploadPath)) {
                 mkdir($uploadPath, 0755, true);
             }
 
@@ -158,13 +189,13 @@ class ImageItemController extends Controller
             $timestamp = now()->format('Ymd_Hi');
             $extension = $imageFile->getClientOriginalExtension();
 
-            $imageName = $firstWord.'_'.$timestamp.'.'.$extension;
+            $imageName = $firstWord . '_' . $timestamp . '.' . $extension;
 
             // Move image
             $imageFile->move($uploadPath, $imageName);
 
             // Save new path
-            $item->image_path = 'storage/uploads/'.$categoryFolder.'/'.$imageName;
+            $item->image_path = 'storage/uploads/' . $categoryFolder . '/' . $imageName;
         }
 
         $item->save();
