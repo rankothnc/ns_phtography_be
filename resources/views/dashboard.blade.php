@@ -1,486 +1,372 @@
 <x-app-layout>
-    <div class="row">
-        <div class="col-lg-8 mb-4 order-0">
-            <div class="card">
-                <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                        <div class="card-body">
-                            <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                            <p class="mb-4">
-                                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                                your profile.
-                            </p>
 
-                            <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                        <div class="card-body pb-0 px-0 px-md-4">
-                            <img src="/admin_assets/assets/img/illustrations/man-with-laptop-light.png" height="140"
-                                alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                                data-app-light-img="illustrations/man-with-laptop-light.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 order-1">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 col-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <img src="/admin_assets/assets/img/icons/unicons/chart-success.png"
-                                        alt="chart success" class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="fw-semibold d-block mb-1">Profit</span>
-                            <h3 class="card-title mb-2">$12,628</h3>
-                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <img src="/admin_assets/assets/img/icons/unicons/wallet-info.png" alt="Credit Card"
-                                        class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <span>Sales</span>
-                            <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Total Revenue -->
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-            <div class="card">
-                <div class="row row-bordered g-0">
-                    <div class="col-md-8">
-                        <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                        <div id="totalRevenueChart" class="px-2"></div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
-                                        id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        2022
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                        <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="growthChart"></div>
-                        <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
+    <div class="container-xxl flex-grow-1 container-p-y">
 
-                        <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                            <div class="d-flex">
-                                <div class="me-2">
-                                    <span class="badge bg-label-primary p-2"><i
-                                            class="bx bx-dollar text-primary"></i></span>
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <small>2022</small>
-                                    <h6 class="mb-0">$32.5k</h6>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="me-2">
-                                    <span class="badge bg-label-info p-2"><i
-                                            class="bx bx-wallet text-info"></i></span>
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <small>2021</small>
-                                    <h6 class="mb-0">$41.2k</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Header -->
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <h4 class="fw-bold mb-1" style="font-size:1.4rem;">
+                    Welcome back, {{ auth()->user()->name }}
+                </h4>
+                <p class="text-muted mb-0" style="font-size:.875rem;">{{ now()->format('l, F j, Y') }}</p>
             </div>
+            <a href="{{ route('image-items.create') }}" class="btn btn-primary">
+                <i class="bx bx-plus me-1"></i> New Item
+            </a>
         </div>
-        <!--/ Total Revenue -->
-        <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-            <div class="row">
-                <div class="col-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <img src="/admin_assets/assets/img/icons/unicons/paypal.png" alt="Credit Card"
-                                        class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt4" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="d-block mb-1">Payments</span>
-                            <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                            <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i>
-                                -14.82%</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <img src="/admin_assets/assets/img/icons/unicons/cc-primary.png" alt="Credit Card"
-                                        class="rounded" />
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="fw-semibold d-block mb-1">Transactions</span>
-                            <h3 class="card-title mb-2">$14,857</h3>
-                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- </div>
-    <div class="row"> -->
-                <div class="col-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                                <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                                    <div class="card-title">
-                                        <h5 class="text-nowrap mb-2">Profile Report</h5>
-                                        <span class="badge bg-label-warning rounded-pill">Year 2021</span>
-                                    </div>
-                                    <div class="mt-sm-auto">
-                                        <small class="text-success text-nowrap fw-semibold"><i
-                                                class="bx bx-chevron-up"></i> 68.2%</small>
-                                        <h3 class="mb-0">$84,686k</h3>
-                                    </div>
-                                </div>
-                                <div id="profileReportChart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <!-- Order Statistics -->
-        <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-            <div class="card h-100">
-                <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                    <div class="card-title mb-0">
-                        <h5 class="m-0 me-2">Order Statistics</h5>
-                        <small class="text-muted">42.82k Total Sales</small>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="bx bx-dots-vertical-rounded"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                            <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex flex-column align-items-center gap-1">
-                            <h2 class="mb-2">8,258</h2>
-                            <span>Total Orders</span>
-                        </div>
-                        <div id="orderStatisticsChart"></div>
-                    </div>
-                    <ul class="p-0 m-0">
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-primary"><i
-                                        class="bx bx-mobile-alt"></i></span>
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <h6 class="mb-0">Electronic</h6>
-                                    <small class="text-muted">Mobile, Earbuds, TV</small>
-                                </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">82.5k</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-success"><i
-                                        class="bx bx-closet"></i></span>
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <h6 class="mb-0">Fashion</h6>
-                                    <small class="text-muted">T-shirt, Jeans, Shoes</small>
-                                </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">23.8k</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-info"><i
-                                        class="bx bx-home-alt"></i></span>
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <h6 class="mb-0">Decor</h6>
-                                    <small class="text-muted">Fine Art, Dining</small>
-                                </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">849k</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-secondary"><i
-                                        class="bx bx-football"></i></span>
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <h6 class="mb-0">Sports</h6>
-                                    <small class="text-muted">Football, Cricket Kit</small>
-                                </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">99</small>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--/ Order Statistics -->
 
-        <!-- Expense Overview -->
-        <div class="col-md-6 col-lg-4 order-1 mb-4">
-            <div class="card h-100">
-                <div class="card-header">
-                    <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item">
-                            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                                data-bs-target="#navs-tabs-line-card-income"
-                                aria-controls="navs-tabs-line-card-income" aria-selected="true">
-                                Income
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" class="nav-link" role="tab">Expenses</button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" class="nav-link" role="tab">Profit</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-body px-0">
-                    <div class="tab-content p-0">
-                        <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
-                            <div class="d-flex p-4 pt-3">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="/admin_assets/assets/img/icons/unicons/wallet.png" alt="User" />
-                                </div>
-                                <div>
-                                    <small class="text-muted d-block">Total Balance</small>
-                                    <div class="d-flex align-items-center">
-                                        <h6 class="mb-0 me-1">$459.10</h6>
-                                        <small class="text-success fw-semibold">
-                                            <i class="bx bx-chevron-up"></i>
-                                            42.9%
-                                        </small>
-                                    </div>
+        <!-- ─── STAT CARDS ─── -->
+        <div class="row g-4 mb-4">
+
+            <!-- Total Photos -->
+            <div class="col-sm-6 col-xl-4">
+                <div class="card h-100 stat-card overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-stretch h-100">
+
+                            <!-- Coloured left accent strip -->
+                            <div class="stat-accent d-flex align-items-center justify-content-center px-4"
+                                style="background:linear-gradient(160deg,#696cff,#9b8fff);min-width:90px;">
+                                <i class="bx bx-images" style="font-size:2rem;color:#fff;"></i>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="d-flex flex-column justify-content-center px-4 py-3 flex-grow-1">
+                                <p class="mb-1 text-muted fw-semibold text-uppercase"
+                                    style="font-size:.7rem;letter-spacing:.8px;">Total Photos</p>
+                                <h3 class="mb-0 fw-bold" style="font-size:1.8rem;color:#2b2c40;line-height:1;">
+                                    {{ $totalPhotos ?? '0' }}
+                                </h3>
+                                <div class="mt-2">
+                                    <span class="badge" style="background:#eeeeff;color:#696cff;font-size:.7rem;">
+                                        <i class="bx bx-image-alt me-1"></i>All time uploads
+                                    </span>
                                 </div>
                             </div>
-                            <div id="incomeChart"></div>
-                            <div class="d-flex justify-content-center pt-4 gap-2">
+
+                            <!-- Background watermark icon -->
+                            <div class="stat-watermark" style="color:#696cff;">
+                                <i class="bx bx-images"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="col-sm-6 col-xl-4">
+                <div class="card h-100 stat-card overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-stretch h-100">
+
+                            <div class="stat-accent d-flex align-items-center justify-content-center px-4"
+                                style="background:linear-gradient(160deg,#ff9f43,#ffbe76);min-width:90px;">
+                                <i class="bx bx-folder-open" style="font-size:2rem;color:#fff;"></i>
+                            </div>
+
+                            <div class="d-flex flex-column justify-content-center px-4 py-3 flex-grow-1">
+                                <p class="mb-1 text-muted fw-semibold text-uppercase"
+                                    style="font-size:.7rem;letter-spacing:.8px;">Categories</p>
+                                <h3 class="mb-0 fw-bold" style="font-size:1.8rem;color:#2b2c40;line-height:1;">
+                                    {{ $totalCategories ?? '0' }}
+                                </h3>
+                                <div class="mt-2">
+                                    <span class="badge" style="background:#fff4e6;color:#ff9f43;font-size:.7rem;">
+                                        <i class="bx bx-collection me-1"></i>Active collections
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="stat-watermark" style="color:#ff9f43;">
+                                <i class="bx bx-folder-open"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Uploaded This Month -->
+            <div class="col-sm-6 col-xl-4">
+                <div class="card h-100 stat-card overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-stretch h-100">
+
+                            <div class="stat-accent d-flex align-items-center justify-content-center px-4"
+                                style="background:linear-gradient(160deg,#28c76f,#48da89);min-width:90px;">
+                                <i class="bx bx-calendar-check" style="font-size:2rem;color:#fff;"></i>
+                            </div>
+
+                            <div class="d-flex flex-column justify-content-center px-4 py-3 flex-grow-1">
+                                <p class="mb-1 text-muted fw-semibold text-uppercase"
+                                    style="font-size:.7rem;letter-spacing:.8px;">Uploaded This Month</p>
+                                <h3 class="mb-0 fw-bold" style="font-size:1.8rem;color:#2b2c40;line-height:1;">
+                                    {{ $uploadedThisMonth ?? '0' }}
+                                </h3>
+                                <div class="mt-2">
+                                    <span class="badge" style="background:#e8faf1;color:#28c76f;font-size:.7rem;">
+                                        <i class="bx bx-calendar me-1"></i>{{ now()->format('F Y') }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="stat-watermark" style="color:#28c76f;">
+                                <i class="bx bx-calendar-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storage -->
+            {{-- <div class="col-sm-6 col-xl-3">
+        <div class="card h-100">
+          <div class="card-body d-flex align-items-center gap-3">
+            <div class="avatar flex-shrink-0">
+              <span class="avatar-initial rounded bg-label-info">
+                <i class="bx bx-server bx-sm"></i>
+              </span>
+            </div>
+            <div class="w-100">
+              <p class="mb-0 text-muted" style="font-size:.8rem;">Storage Used</p>
+              <h5 class="mb-0 fw-bold">{{ $storageUsed ?? '0 GB' }}</h5>
+              <div class="progress mt-1" style="height:5px;">
+                <div class="progress-bar bg-info" style="width:{{ $storagePercent ?? 0 }}%"></div>
+              </div>
+              <small class="text-muted">{{ $storagePercent ?? 0 }}% of {{ $storageTotal ?? '0 GB' }}</small>
+            </div>
+          </div>
+        </div>
+      </div> --}}
+
+        </div>
+        <!-- /STAT CARDS -->
+
+        <!-- ─── MIDDLE ROW: Recent Uploads + Quick Actions ─── -->
+        <div class="row g-4 mb-4">
+
+            <!-- Recent Uploads -->
+            <div class="col-lg-7">
+                <div class="card h-100">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h5 class="mb-0">Recent Uploads</h5>
+                        <div class="d-flex gap-2">
+                            <a href="{{ route('image-items.index') }}" class="btn btn-sm btn-outline-secondary">
+                                <i class="bx bx-filter-alt me-1"></i>View All
+                            </a>
+                            <a href="{{ route('image-items.create') }}" class="btn btn-sm btn-primary">
+                                <i class="bx bx-plus me-1"></i>Upload
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @if (isset($recentItems) && $recentItems->count())
+                            <div class="row g-3">
+                                @foreach ($recentItems->take(5) as $item)
+                                    <div class="col-4">
+                                        <div class="position-relative rounded overflow-hidden" style="aspect-ratio:1;">
+                                            <img src="{{ asset($item->image_path) }}" alt="{{ $item->image_title }}"
+                                                class="w-100 h-100 object-fit-cover" style="object-fit:cover;">
+                                            <div class="position-absolute bottom-0 start-0 end-0 p-2"
+                                                style="background:linear-gradient(to top,rgba(0,0,0,.65),transparent);">
+                                                <span class="badge bg-primary" style="font-size:.7rem; background-color:#6f6f9299 !important;">
+                                                    {{ $item->category?->ic_name ?? 'Uncategorized' }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                                <!-- Add Photo Card -->
+                                <div class="col-4">
+                                    <a href="{{ route('image-items.create') }}"
+                                        class="d-flex flex-column align-items-center justify-content-center rounded text-primary text-decoration-none h-100"
+                                        style="aspect-ratio:1;border:2px dashed #696cff;background:#f5f5ff;transition:.2s;"
+                                        onmouseover="this.style.background='#e7e7ff'"
+                                        onmouseout="this.style.background='#f5f5ff'">
+                                        <i class="bx bx-plus bx-md"></i>
+                                        <small class="fw-semibold mt-1">Add Photo</small>
+                                    </a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="text-center py-5">
+                                <i class="bx bx-image-add bx-lg text-muted mb-3 d-block"></i>
+                                <p class="text-muted mb-3">No photos uploaded yet.</p>
+                                <a href="{{ route('image-items.create') }}" class="btn btn-primary btn-sm">
+                                    <i class="bx bx-plus me-1"></i>Upload First Photo
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── CATEGORIES CARD ─── -->
+            <div class="col-lg-5">
+                <div class="card h-100 d-flex flex-column">
+
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <div>
+                            <h5 class="mb-0">Categories</h5>
+                            <small class="text-muted">{{ $categories->count() }} total</small>
+                        </div>
+                        <a href="{{ route('categories.index') }}" class="btn btn-sm btn-primary">
+                            <i class="bx bx-plus me-1"></i>Add New
+                        </a>
+                    </div>
+
+                    <!-- Scrollable list fills remaining card height -->
+                    <div class="card-body p-0 flex-grow-1 overflow-auto" style="max-height:360px;">
+
+                        @php
+                            // Cycle through Sneat label colours for variety
+                            $colours = ['primary', 'success', 'warning', 'info', 'danger', 'secondary'];
+                        @endphp
+
+                        @forelse($categories as $index => $category)
+                            @php $colour = $colours[$index % count($colours)]; @endphp
+                            <div class="d-flex align-items-center gap-3 px-4 py-3 category-row border-bottom">
+
+                                <!-- Icon avatar -->
+                                <div class="avatar avatar-sm flex-shrink-0">
+                                    <span class="avatar-initial rounded-circle bg-label-{{ $colour }}">
+                                        <i class="bx bx-folder"></i>
+                                    </span>
+                                </div>
+
+                                <!-- Name + item count bar -->
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="fw-semibold text-truncate" style="font-size:.875rem;">
+                                            {{ $category->ic_name }}
+                                        </span>
+                                        <span class="text-muted ms-2 flex-shrink-0" style="font-size:.75rem;">
+                                            {{ $category->items_count }} photos
+                                        </span>
+                                    </div>
+                                    <div class="progress" style="height:4px;border-radius:99px;">
+                                        @php
+                                            $max = $categories->max('items_count') ?: 1;
+                                            $pct = round(($category->items_count / $max) * 100);
+                                        @endphp
+                                        <div class="progress-bar bg-{{ $colour }}"
+                                            style="width:{{ $pct }}%;border-radius:99px;"
+                                            title="{{ $pct }}%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Status badge -->
                                 <div class="flex-shrink-0">
-                                    <div id="expensesOfWeek"></div>
-                                </div>
-                                <div>
-                                    <p class="mb-n1 mt-1">Expenses This Week</p>
-                                    <small class="text-muted">$39 less than last week</small>
+                                    @if ($category->status === 'active')
+                                        <span class="badge bg-label-success" style="font-size:.7rem;">Active</span>
+                                    @else
+                                        <span class="badge bg-label-secondary" style="font-size:.7rem;">Draft</span>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ Expense Overview -->
+                        @empty
+                            <div
+                                class="d-flex flex-column align-items-center justify-content-center h-100 py-5 text-center">
+                                <i class="bx bx-folder-open bx-lg text-muted mb-2"></i>
+                                <p class="text-muted mb-3" style="font-size:.875rem;">No categories yet.</p>
+                                <a href="{{ route('image-categories.create') }}" class="btn btn-sm btn-primary">
+                                    <i class="bx bx-plus me-1"></i>Create First Category
+                                </a>
+                            </div>
+                        @endforelse
 
-        <!-- Transactions -->
-        <div class="col-md-6 col-lg-4 order-2 mb-4">
-            <div class="card h-100">
-                <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title m-0 me-2">Transactions</h5>
-                    <div class="dropdown">
-                        <button class="btn p-0" type="button" id="transactionID" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="bx bx-dots-vertical-rounded"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                            <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <ul class="p-0 m-0">
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="/admin_assets/assets/img/icons/unicons/paypal.png" alt="User"
-                                    class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Paypal</small>
-                                    <h6 class="mb-0">Send money</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+82.6</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="/admin_assets/assets/img/icons/unicons/wallet.png" alt="User"
-                                    class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Wallet</small>
-                                    <h6 class="mb-0">Mac'D</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+270.69</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="/admin_assets/assets/img/icons/unicons/chart.png" alt="User"
-                                    class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Transfer</small>
-                                    <h6 class="mb-0">Refund</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+637.91</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="/admin_assets/assets/img/icons/unicons/cc-success.png" alt="User"
-                                    class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Credit Card</small>
-                                    <h6 class="mb-0">Ordered Food</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">-838.71</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="/admin_assets/assets/img/icons/unicons/wallet.png" alt="User"
-                                    class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Wallet</small>
-                                    <h6 class="mb-0">Starbucks</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+203.33</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="/admin_assets/assets/img/icons/unicons/cc-warning.png" alt="User"
-                                    class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Mastercard</small>
-                                    <h6 class="mb-0">Ordered Food</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">-92.45</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+
+                    <!-- Footer summary -->
+                    @if ($categories->count())
+                        <div class="card-footer d-flex align-items-center justify-content-between py-2 px-4"
+                            style="background:#f9f9ff;border-top:1px solid #ebebff;">
+                            <small class="text-muted">
+                                <i class="bx bx-check-circle text-success me-1"></i>
+                                {{ $categories->where('status', 'active')->count() }} active
+                            </small>
+                            <small class="text-muted">
+                                <i class="bx bx-image text-primary me-1"></i>
+                                {{ $categories->sum('items_count') }} photos total
+                            </small>
+                            <a href="{{ route('categories.index') }}"
+                                class="btn btn-xs btn-outline-primary py-1 px-2" style="font-size:.75rem;">
+                                Manage All
+                            </a>
+                        </div>
+                    @endif
+
                 </div>
             </div>
+            <!-- /CATEGORIES CARD -->
+
         </div>
-        <!--/ Transactions -->
-    </div>
+
+        <style>
+            .category-row {
+                transition: background .15s;
+            }
+
+            .category-row:hover {
+                background: #f5f5ff;
+            }
+
+            .category-row:last-child {
+                border-bottom: none !important;
+            }
+
+            .category-edit-btn {
+                opacity: 0;
+                transition: opacity .15s;
+                font-size: 1rem;
+            }
+
+            .category-row:hover .category-edit-btn {
+                opacity: 1;
+            }
+        </style>
+        <!-- /MIDDLE ROW -->
+
+    </div><!-- /container -->
+
+    <style>
+        .quick-action-btn {
+            transition: all .2s;
+            text-decoration: none;
+        }
+
+        .quick-action-btn:hover {
+            border-color: #696cff !important;
+            background: #f0f0ff;
+            transform: translateY(-2px);
+        }
+
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(43, 44, 64, 0.08);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(43, 44, 64, 0.14);
+        }
+
+        .stat-accent {
+            border-radius: 0;
+            position: relative;
+        }
+
+        .stat-watermark {
+            position: absolute;
+            right: -10px;
+            bottom: -8px;
+            font-size: 5rem;
+            opacity: .06;
+            pointer-events: none;
+            line-height: 1;
+        }
+    </style>
+
 </x-app-layout>

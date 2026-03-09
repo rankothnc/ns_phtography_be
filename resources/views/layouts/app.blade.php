@@ -112,12 +112,25 @@
                         </a>
                     </li>
                 </ul>
+                <ul>
+                    <a class="dropdown-item-side" href="{{ route('profile.edit') }}">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                    </a>
+                </ul>
+                <ul>
+                    <a class="dropdown-item-side" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                    </a>
+                </ul>
             </aside>
             <!-- / Menu -->
             <!-- Layout page -->
             <div class="layout-page">
                 <!-- Navbar -->
-                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                {{-- <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                     id="layout-navbar">
                     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
                         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -126,15 +139,7 @@
                     </div>
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                                    aria-label="Search..." />
-                            </div>
-                        </div>
-                        <!-- /Search -->
+
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <!-- User -->
@@ -154,7 +159,7 @@
                                             <span class="align-middle">My Profile</span>
                                         </a>
                                     </li>
-                                    {{-- <li>
+                                    <li>
                                         <a class="dropdown-item" href="#">
                                             <i class="bx bx-cog me-2"></i>
                                             <span class="align-middle">Settings</span>
@@ -163,7 +168,7 @@
 
                                     <li>
                                         <div class="dropdown-divider"></div>
-                                    </li> --}}
+                                    </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -176,7 +181,7 @@
                             <!--/ User -->
                         </ul>
                     </div>
-                </nav>
+                </nav> --}}
                 <!-- / Navbar -->
                 <!-- Content wrapper -->
                 <div class="content-wrapper">

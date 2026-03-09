@@ -14,7 +14,23 @@ Route::get('/test', function () {
 }); */
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $categories = \App\Models\ImageCategory::withCount(['items' => function ($query) {
+        $query->where('status', 'active');
+    }])->get();
+
+    return view('dashboard', [
+        'totalPhotos' => \App\Models\ImageItem::count(),
+        'totalCategories' => $categories->count(),
+        'totalLocations' => \App\Models\ImageItem::whereMonth('c_date', now()->month)
+            ->whereYear('c_date', now()->year)
+            ->count(),
+        'recentItems' => \App\Models\ImageItem::with('category')
+            ->whereNotNull('image_path')
+            ->latest('c_date')
+            ->take(5)
+            ->get(),
+        'categories' => $categories,
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

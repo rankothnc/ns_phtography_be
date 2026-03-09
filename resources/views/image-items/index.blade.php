@@ -324,27 +324,23 @@
         </a>
     </div>
     <div class="card mb-4">
-        <div class="card-body">
+        <div class="card-body py-3">
             <form method="GET" action="{{ route('image-items.index') }}">
-                <div class="row g-3">
-
-                    <!-- Title search -->
-                    <div class="col-md-3">
-                        <label class="form-label">Title</label>
+                <!-- Row 1: Title, Category, Status -->
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <label class="form-label mb-1 small">Title</label>
                         <input type="text" name="title" value="{{ request('title') }}" list="titleList"
-                            class="form-control" placeholder="Search by title">
-
+                            class="form-control form-control" placeholder="Search by title">
                         <datalist id="titleList">
                             @foreach ($titles as $t)
                                 <option value="{{ $t->image_title }}">
                             @endforeach
                         </datalist>
                     </div>
-
-                    <!-- Category search -->
-                    <div class="col-md-3">
-                        <label class="form-label">Category</label>
-                        <select name="category_id" class="form-select">
+                    <div class="col-md-4">
+                        <label class="form-label mb-1 small">Category</label>
+                        <select name="category_id" class="form-control form-control">
                             <option value="">All Categories</option>
                             @foreach ($categories as $cat)
                                 <option value="{{ $cat->ic_id }}"
@@ -354,42 +350,33 @@
                             @endforeach
                         </select>
                     </div>
-                    <!-- Captured date -->
-                    <div class="col-md-2">
-                        <label class="form-label">From Date</label>
-                        <input type="date" name="date_from" value="{{ request('date_from') }}" class="form-control">
-                    </div>
-
-                    <div class="col-md-2">
-                        <label class="form-label">To Date</label>
-                        <input type="date" name="date_to" value="{{ request('date_to') }}" class="form-control">
-                    </div>
-                    <!-- Status -->
-                    <div class="col-md-2">
-                        <label class="form-label">Status</label>
-                        <select name="status" class="form-select">
+                    <div class="col-md-4">
+                        <label class="form-label mb-1 small">Status</label>
+                        <select name="status" class="form-control form-control">
                             <option value="">All</option>
-                            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>
-                                Active
+                            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active
                             </option>
-                            <option value="delete" {{ request('status') == 'delete' ? 'selected' : '' }}>
-                                Inactive
+                            <option value="delete" {{ request('status') == 'delete' ? 'selected' : '' }}>Inactive
                             </option>
                         </select>
                     </div>
                 </div>
-                <!-- Buttons -->
-                <div class="row mt-4">
-                    <div class="col-12 d-flex justify-content-end gap-2">
 
-                        <button type="submit" class="btn btn-primary">
-                            Search
-                        </button>
-
-                        <a href="{{ route('image-items.index') }}" class="btn btn-outline-secondary">
-                            Reset
-                        </a>
-
+                <!-- Row 2: From Date, To Date, Buttons -->
+                <div class="row g-4 mt-1 align-items-end">
+                    <div class="col-md-4">
+                        <label class="form-label mb-1 small">From Date</label>
+                        <input type="date" name="date_from" value="{{ request('date_from') }}"
+                            class="form-control form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label mb-1 small">To Date</label>
+                        <input type="date" name="date_to" value="{{ request('date_to') }}"
+                            class="form-control form-control">
+                    </div>
+                    <div class="col-md-4 d-flex gap-2 justify-content-end">
+                        <button type="submit" class="btn btn-primary btn">Search</button>
+                        <a href="{{ route('image-items.index') }}" class="btn btn-outline-secondary btn">Reset</a>
                     </div>
                 </div>
             </form>
