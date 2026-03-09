@@ -4,15 +4,13 @@
 
         <!-- Header -->
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <div>
-                <h4 class="fw-bold mb-1" style="font-size:1.4rem;">
-                    Welcome back, {{ auth()->user()->name }}
-                </h4>
-                <p class="text-muted mb-0" style="font-size:.875rem;">{{ now()->format('l, F j, Y') }}</p>
-            </div>
-            <a href="{{ route('image-items.create') }}" class="btn btn-primary">
-                <i class="bx bx-plus me-1"></i> New Item
-            </a>
+            <h4 class="fw-bold mb-0" style="font-size:1.75rem;">
+                Welcome back, {{ auth()->user()->name }}
+            </h4>
+
+            <p class="text-muted mb-0" style="font-size:1.0rem; color: #6a839e !important">
+                {{ now()->format('l, F j, Y') }}
+            </p>
         </div>
 
         <!-- ─── STAT CARDS ─── -->
@@ -26,7 +24,7 @@
 
                             <!-- Coloured left accent strip -->
                             <div class="stat-accent d-flex align-items-center justify-content-center px-4"
-                                style="background:linear-gradient(160deg,#696cff,#9b8fff);min-width:90px;">
+                                style="background:linear-gradient(160deg,#000149,#1100a2); min-width:90px;">
                                 <i class="bx bx-images" style="font-size:2rem;color:#fff;"></i>
                             </div>
 
@@ -60,7 +58,7 @@
                         <div class="d-flex align-items-stretch h-100">
 
                             <div class="stat-accent d-flex align-items-center justify-content-center px-4"
-                                style="background:linear-gradient(160deg,#ff9f43,#ffbe76);min-width:90px;">
+                                style="background:linear-gradient(160deg,#ff7d00,#ffab4e); min-width:90px;">
                                 <i class="bx bx-folder-open" style="font-size:2rem;color:#fff;"></i>
                             </div>
 
@@ -92,7 +90,7 @@
                         <div class="d-flex align-items-stretch h-100">
 
                             <div class="stat-accent d-flex align-items-center justify-content-center px-4"
-                                style="background:linear-gradient(160deg,#28c76f,#48da89);min-width:90px;">
+                                style="background:linear-gradient(160deg,#007b02,#24cd6f);min-width:90px;">
                                 <i class="bx bx-calendar-check" style="font-size:2rem;color:#fff;"></i>
                             </div>
 
@@ -154,7 +152,7 @@
                                 <i class="bx bx-filter-alt me-1"></i>View All
                             </a>
                             <a href="{{ route('image-items.create') }}" class="btn btn-sm btn-primary">
-                                <i class="bx bx-plus me-1"></i>Upload
+                                <i class="bx bx-plus me-1"></i>Add New
                             </a>
                         </div>
                     </div>
@@ -168,7 +166,8 @@
                                                 class="w-100 h-100 object-fit-cover" style="object-fit:cover;">
                                             <div class="position-absolute bottom-0 start-0 end-0 p-2"
                                                 style="background:linear-gradient(to top,rgba(0,0,0,.65),transparent);">
-                                                <span class="badge bg-primary" style="font-size:.7rem; background-color:#6f6f9299 !important;">
+                                                <span class="badge bg-primary"
+                                                    style="font-size:.7rem; background-color:#6f6f9299 !important;">
                                                     {{ $item->category?->ic_name ?? 'Uncategorized' }}
                                                 </span>
                                             </div>

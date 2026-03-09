@@ -21,7 +21,7 @@ Route::get('/dashboard', function () {
     return view('dashboard', [
         'totalPhotos' => \App\Models\ImageItem::count(),
         'totalCategories' => $categories->count(),
-        'totalLocations' => \App\Models\ImageItem::whereMonth('c_date', now()->month)
+        'uploadedThisMonth' => \App\Models\ImageItem::whereMonth('c_date', now()->month)
             ->whereYear('c_date', now()->year)
             ->count(),
         'recentItems' => \App\Models\ImageItem::with('category')

@@ -294,7 +294,10 @@
                         <div class="card upload-card mb-4 w-100 h-100 flex-grow-1">
                             <!-- Header -->
                             <div class="card-header">
-                                <h5><i class="bi bi-image-fill"></i> Image Upload</h5>
+                                <h5 class="mb-1">
+                                    <i class="bi bi-image-fill"></i> Image Upload
+                                </h5>
+                                <small class="text-muted">Image size should be less than 5MB</small>
                             </div>
                             <!-- Body -->
                             <div class="card-body d-flex flex-column">

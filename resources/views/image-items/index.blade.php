@@ -392,7 +392,7 @@
                         <th>Title</th>
                         <th>Image</th>
                         <th>Category</th>
-                        <th>Short Description</th>
+                        <th>Location</th>
                         <th>Captured Date</th>
                         <th>Status</th>
                         <th>Action</th>
