@@ -256,7 +256,7 @@
                                         value="{{ $item->image_title ?? '' }}" required />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="shrt-desc">Short Description</label>
+                                    <label class="form-label" for="shrt-desc">Location</label>
                                     <input type="text" class="form-control" name="image_desc_short"
                                         value="{{ $item->image_desc_short ?? '' }}" id="shrt-desc" />
                                 </div>
@@ -272,7 +272,7 @@
 
                                 <div class="mb-3">
                                     <label class="form-label" for="img-desc">Description</label>
-                                    <textarea id="img-desc" name="image_desc_long" class="form-control">{{ $item->image_desc_long ?? '' }}</textarea>
+                                    <textarea id="img-desc" name="image_desc_long" class="form-control" style="height: 155px;">{{ $item->image_desc_long ?? '' }}</textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="img-status">Status</label>
@@ -294,7 +294,10 @@
                         <div class="card upload-card mb-4 w-100 h-100 flex-grow-1">
                             <!-- Header -->
                             <div class="card-header">
-                                <h5><i class="bi bi-image-fill"></i> Image Upload</h5>
+                                <h5 class="mb-1">
+                                    <i class="bi bi-image-fill"></i> Image Upload
+                                </h5>
+                                <small class="text-muted">Image size should be less than 5MB</small>
                             </div>
                             <!-- Body -->
                             <div class="card-body d-flex flex-column">
